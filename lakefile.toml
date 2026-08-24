@@ -1,0 +1,11 @@
+name = "MAT120"
+version = "0.1.0"
+defaultTargets = ["MAT120"]
+
+[[lean_lib]]
+name = "MAT120"
+
+[[require]]
+name = "verbose"
+git = "https://github.com/PatrickMassot/verbose-lean4.git"
+rev = "master"
