@@ -8,7 +8,7 @@
    "rev": "a2f87b133d5b5e1b0b81d4fd7586b8750c08c5db",
    "name": "verbose",
    "manifestFile": "lake-manifest.json",
-   "inputRev": "master",
+   "inputRev": "a2f87b133d5b5e1b0b81d4fd7586b8750c08c5db",
    "inherited": false,
    "configFile": "lakefile.toml"},
   {"url": "https://github.com/leanprover-community/mathlib4.git",
