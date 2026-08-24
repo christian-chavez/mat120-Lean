@@ -4,7 +4,6 @@
 
 ---
 
-## 🇫🇷 Français
 
 Cliquez ci-dessous pour ouvrir un éditeur Lean prêt à l'emploi dans votre navigateur.
 Aucune installation requise. Un compte GitHub (gratuit) est nécessaire.
@@ -24,7 +23,6 @@ Si cela arrive quand même, pas de panique : il suffit de recréer un nouveau Co
 
 ---
 
-## 🇬🇧 English
 
 Click below to open a ready-to-use Lean editor in your browser.
 No installation needed. You'll need a (free) GitHub account.
