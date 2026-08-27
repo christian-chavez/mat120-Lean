@@ -6,7 +6,10 @@
   "customizations": {
     "vscode": {
       "extensions": ["leanprover.lean4"],
-      "settings": { "editor.wordWrap": "on" }
+      "settings": {
+        "editor.wordWrap": "on",
+        "chat.disableAIFeatures": true
+      }
     },
     "codespaces": {
       "openFiles": ["MAT120/Welcome.lean"]
