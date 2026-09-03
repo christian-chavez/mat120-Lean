@@ -13,6 +13,7 @@ example (P Q : Prop) (hP : P) (hPQ : P → Q) : Q := by
 - Exercises syntax
 - Explain the LEAN infoview
 - sorry - proof by apology
+- Expliquer comment LEAN fait ses parantheses
 
 Notes from Thomas: Language of math will be seen in class in the second week: "This is not a phrase in set theory and logic, you have to translate"
 -/
@@ -45,7 +46,7 @@ QED
 
 example (P Q : Prop) (hP : P) (h : P → Q) : Q := sorry
 
-Exemple "Propositional logic in an example bloc"
+Exemple "Exemple de preuve dans un bloc VerboseLEAN"
  Données : (P Q : Prop)
  Hypothèses : (hp : P) (imp : P → Q)
  Conclusion : Q
@@ -55,7 +56,7 @@ Démonstration :
 QED
 
 
-/- En utilisant seulement les lois de LP-1 à LP-13-/
+/- Démontrer en utilisant seulement les lois de LP-1 à LP-13-/
 Exemple "Laboratoire 4 1)"
   Données : (A B : Prop)
   Hypothèses :
