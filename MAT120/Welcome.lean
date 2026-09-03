@@ -1,4 +1,5 @@
 import Verbose.French.ExampleLib
+import MAT120.lois_logique
 
 open Verbose.French
 
@@ -51,4 +52,18 @@ Exemple "Propositional logic in an example bloc"
 Démonstration :
  Par imp il suffit de montrer que P
  On conclut par hp
+QED
+
+
+/- En utilisant seulement les lois de LP-1 à LP-13-/
+Exemple "Laboratoire 4 1)"
+  Données : (A B : Prop)
+  Hypothèses :
+  Conclusion : (A ∨ (A ∧ B)) ↔ A
+Démonstration :
+On réécrit via LP_12
+On réécrit via LP_6
+On réécrit via LP_11
+On réécrit via LP_5
+On réécrit via LP_14
 QED
