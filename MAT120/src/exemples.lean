@@ -1,6 +1,8 @@
 import Verbose.French.ExampleLib
 import Verbose.French.Statements
 
+/- Voici une liste des exemples de definitions et théoremes qui peuvent être utilisées avec Verbose.French.Statements. Ces résultats ne seron pas évalués, mais vous êtes libres d'explorer la biblioteque. Par contre, dans les excercies vous ne pouvez utiliser les réultas permis dans le context de chaque section. -/
+
 set_option linter.unusedTactic false
 
 Exercice "La continuité implique la continuité séquentielle."
