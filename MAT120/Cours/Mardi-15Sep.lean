@@ -15,18 +15,18 @@ open Verbose.Named
 
 -/
 
-/- LEAN est un un **assistant de preuve par ordinateur**, cette à dire, il permettre à
-l'usager de savoir si une **propostion** est vraie. Dans LEAN, il y a des differents **types** d'objets, dont le plus important est le type Prop : -/
+/- LEAN est un **assistant de preuve par ordinateur**, c'est-à-dire qu'il permet à
+l'usager de savoir si une **proposition** est vraie. Dans LEAN, il y a différents **types** d'objets, dont le plus important est le type Prop : -/
 
 example (P : Prop) : Prop := P -- P est une proposition : un énoncé, ni vrai ni faux pour l'instant. On dit que P est un **terme** de `Prop`
 
-/- Comment on l'appris, une proposition peut avoir deux valeurs de verité: Vrai ou Faux -/
+/- Comme on l'a appris, une proposition peut avoir deux valeurs de vérité : Vrai ou Faux -/
 
-example (P : Prop) (hP : P) : P := hP -- Ici, hp est un **terme** de P, ce qui pour LEAN veut dire que hp est un preuve que P est vraie
+example (P : Prop) (hP : P) : P := hP -- Ici, hP est un **terme** de P, ce qui pour LEAN veut dire que hP est une preuve que P est vraie
 
-/- Dans les deux exemples precedents, on doit dire à LEAN qui sont P et hp. Ceci est déclaré entre `example` et `:`.
+/- Dans les deux exemples précédents, on doit dire à LEAN qui sont P et hP. Ceci est déclaré entre `example` et `:`.
 
-Apres `:`, vient la *demande*: dans le premier exemple on demande à LEAN un exemple de proposition, et on lui donne (`:=`) P. Dans le deuxieme exemple, on lui demande une preuve de P, et on lui donne (`:=`) hP. -/
+Après `:`, vient la *demande* : dans le premier exemple on demande à LEAN un exemple de proposition, et on lui donne (`:=`) P. Dans le deuxième exemple, on lui demande une preuve de P, et on lui donne (`:=`) hP. -/
 
 -- Quelle est la signification de l'exemple suivant?
 
@@ -101,18 +101,8 @@ Exemple "Exemple d'une preuve avec hypothèses"
   Hypothèses : (h : P → Q) (hP : P) -- Traduction :
   Conclusion : Q
 Démonstration :
-  Par h il suffit de montrer que P -- Exemple de tactique, comparer avec l'excercise 1.23 b)
+  Par h il suffit de montrer que P -- Exemple de tactique, comparer avec l'exercice 1.23 b)
   On conclut par hP
-QED
-
-Exemple "Une autre façon de pruver une implication et de l'utiliser"
-  Données : (P Q R: Prop) -- Traduction :
-  Hypothèses : (h : R → P) (k : P → Q)
-  Conclusion : R → Q
-Démonstration :
-  Supposons hR : R
-  Par h appliqué à hR on obtient (hp : P) -- Ceci est une autre façon de rédiger la technique de preuve de l'implicaiton.
-  On conclut par k appliqué à hp
 QED
 
 /- 4. Le panneau « Lean Infoview »
@@ -134,6 +124,31 @@ Démonstration :
   On conclut par hP
   Montrons maintenant que Q
   On conclut par hQ
+QED
+
+Exemple "Une autre façon de prouver et utiliser une implication"
+  Données : (P Q R: Prop) -- Traduction :
+  Hypothèses : (h : R → P) (k : P → Q)
+  Conclusion : R → Q
+Démonstration :
+  Supposons hR : R
+  Par h appliqué à hR on obtient (hp : P) -- Ceci est une autre façon de rédiger la technique de preuve de l'implication.
+  On conclut par k appliqué à hp
+QED
+
+
+/- Exemple de calcul propositionnel -/
+
+Exemple "Laboratoire 4 1)"
+  Données : (A B : Prop)
+  Hypothèses :
+  Conclusion : (A ∨ (A ∧ B)) ↔ A
+Démonstration :
+On réécrit via LP_12 -- Cette technique nous permet de réécrire une proposition avec une autre proposition équivalente.
+On réécrit via LP_6
+On réécrit via LP_11
+On réécrit via LP_5
+On réécrit via LP_14
 QED
 
 /- 5. `sorry` — la preuve par excuse
@@ -159,27 +174,75 @@ QED
    La virgule sépare la variable de l'énoncé.
 -/
 
-example : ∀ n : ℕ, n = n := by
+Exemple "Pour tout n, n égale n"
+  Données :
+  Hypothèses :
+  Conclusion : ∀ n : ℕ, n = n
+Démonstration :
   Soit n : ℕ
-  On calcule
+  On calcule -- Cette technique nous permet de vérifier des égalités, ici clairement n = n, mais on doit le dire à LEAN !
+QED
 
-example : ∃ n : ℕ, n = 3 := by
+Exemple "Il existe n tel que n égale 3"
+  Données :
+  Hypothèses :
+  Conclusion : ∃ n : ℕ, n = 3
+Démonstration :
   Montrons que 3 convient
   On calcule
+QED
 
-example : ∀ x : ℕ, ∃ y : ℕ, x ≤ y := by
-  Soit x : ℕ
-  Montrons que x convient
+/- À vous de jouer ! -/
+Exemple "Pour tout x, il existe y plus grand"
+  Données :
+  Hypothèses :
+  Conclusion : ∀ x : ℕ, ∃ y : ℕ, x ≤ y
+Démonstration :
+  sorry
+QED
+
+/- Bonus (si le temps le permet) : nier et ordonner les quantificateurs.
+   ¬∀ devient ∃¬, et ¬∃ devient ∀¬ — la tactique `On pousse la négation`
+   applique cette règle automatiquement. -/
+
+Exemple "Nier un énoncé universel"
+  Données :
+  Hypothèses :
+  Conclusion : ¬(∀ n : ℕ, n > 0)
+Démonstration :
+  On pousse la négation -- transforme le but en ∃ n : ℕ, n ≤ 0
+  sorry
+QED
+
+/- L'ordre des quantificateurs compte : ∀x ∃y (y > x) est vraie, mais si on
+   échange l'ordre, ∃y ∀x (y > x) devient fausse (aucun entier n'est plus
+   grand que tous les entiers). On verra vendredi comment prouver qu'un
+   énoncé est faux par contradiction ! -/
+
+Exemple "L'ordre des quantificateurs compte"
+  Données :
+  Hypothèses :
+  Conclusion : ∀ x : ℤ, ∃ y : ℤ, y > x
+Démonstration :
+  Soit x : ℤ
+  Montrons que x + 1 convient
   On calcule
+QED
 
-/-Excercice: Traduction de la Proposition 2.4 du cours -/
+/- Exemple : traduction de la Proposition 2.4 du cours -/
 
 Exemple "Proposition 2.4"
-  Données: (n : ℤ) (n_est_pair = (∃ k : ℤ, n = 2*k) : Prop)
+  Données: (n : ℤ)
   Hypothèses:
   Conclusion: (∃ k : ℤ, n = 2*k) → (∃ k' :ℤ, n^2 = 2*k')
 Démonstration:
- sorry
+ Supposons n_est_pair : (∃ k : ℤ, n = 2*k)
+ Par n_est_pair on obtient k tel que (hn : n = 2*k) -- On doit toujours donner un nom à nos hypothèses en LEAN
+ Montrons que 2*k^2 convient -- k' = 2*k^2
+ -- On doit faire des calculs, ce qu'on indique par `Calc`
+ Calc n^2 = (2*k)^2 par hn
+      _ = 4*(k^2) par calcul
+      _ = 2*(2*k^2) par calcul
 QED
 
 
@@ -190,8 +253,9 @@ QED
      ¬   puis   ∧   puis   ∨   puis   →   puis   ↔
    `→` s'associe à droite ; un quantificateur s'étend le plus loin possible.
 
-   Ci-dessous les deux membres sont le même énoncé pour Lean (`Iff.rfl` est la tecnique equivalente à faire des calculs propositionels) :
-   seules les parenthèses changent.
+   Ci-dessous les deux membres sont le même énoncé pour Lean une fois les
+   parenthèses ajoutées ; c'est pourquoi la technique `Iff.rfl` suffit à
+   conclure : seules les parenthèses changent.
 -/
 
 example (P Q : Prop)     : (¬ P ∧ Q)         ↔ ((¬ P) ∧ Q)            := Iff.rfl
@@ -201,44 +265,29 @@ example (P Q R : Prop)   : (P → Q → R)       ↔ (P → (Q → R))          
 example (P Q R : Prop)   : (P → Q ↔ R)       ↔ ((P → Q) ↔ R)          := Iff.rfl
 example (P Q : ℕ → Prop) : (∀ x, P x ∧ Q x)  ↔ (∀ x, (P x ∧ Q x))     := Iff.rfl
 
-/- Excercices -/
+/- Exercices -/
 
-/- Démontrer en utilisant seulement les lois de LP-1 à LP-13-/
-Exemple "Laboratoire 4 1)"
+/- Formaliser et montrer les énoncés de l'exercice 1 du fichier Notes du cours/lab_4.pdf -/
+
+Exemple "Laboratoire 4 : 1.b)"
   Données : (A B : Prop)
   Hypothèses :
-  Conclusion : (A ∨ (A ∧ B)) ↔ A
+  Conclusion : A
 Démonstration :
-On réécrit via LP_12
-On réécrit via LP_6
-On réécrit via LP_11
-On réécrit via LP_5
-On réécrit via LP_14
+sorry
 QED
 
-/- Ecrire sa contraposée-/
+/- Compléter la preuve suivante -/
 
-Exemple "Contraposée"
-Données : (n : ℕ)
-Hypothèses :
-Conclusion : (∀ k : ℕ, n ≠ k*2) → (∀ k' : ℕ, n ≠ k'*4)
+Exemple "Exercice 1.16"
+  Données :
+  Hypothèses :
+  Conclusion :∃ n : ℕ , n^2 = 4
 Démonstration :
-  On contrapose
-  sorry
+sorry
 QED
 
-/- Things like this to see in the second week-/
-Exemple "Exemple 1.6 des notes de cours"
- Données : (n : ℕ)
- Hypothèses : (h : (∃ k : ℕ, n = k*4)) /- n est divisible par 4 -/
- Conclusion : (∃ k' : ℕ, n = k'*2) /- n est pair -/
-Démonstration :
- Par h on obtient k tel que (hk : n = k*4) /-Attention : LEAN ne sait pas que l*4 = 4*l-/
- Montrons que k*2 convient /- k*2 = k'-/
- Calc n = k*4 par hk
-      _ = k*2*2 par calcul /- Please write in your code what you use? -/
-QED
 
 /-
-Note: Le but de ce cours est de vous presenter LEAN comme un outil d'apprentissage de la logique mathématique. LEAN es aussi utilisée de façon professionel par des mathematiciens et infomaticiens. Dans ce cours on utilise VerboseLEAN, une version de LEAN qu'utilise le langage naturel (proche de ce que vous écrirez dans vos notes par exemple). Par contre, la syntax "normale" de LEAN resemble plus à un langage de programation.
+Note : le but de ce cours est de vous présenter LEAN comme un outil d'apprentissage de la logique mathématique. LEAN est aussi utilisé de façon professionnelle par des mathématiciens et des informaticiens. Dans ce cours on utilise VerboseLEAN, une version de LEAN qui utilise le langage naturel (proche de ce que vous écririez dans vos notes par exemple). Par contre, la syntaxe « normale » de LEAN ressemble plus à un langage de programmation.
 -/
