@@ -24,14 +24,6 @@ Démonstration :
  On conclut par h hP
 QED
 
--- Utiliser une implication en avant : `on conclut par ... appliqué à ...`
-Exemple "Utiliser P → Q en avant"
- Données : (P Q : Prop)
- Hypothèses : (h : P → Q) (hP : P)
- Conclusion : Q
-Démonstration :
- On conclut par h appliqué à hP
-QED
 
 -- Utiliser une implication en arrière : `il suffit de montrer que`
 Exemple "Utiliser P → Q en arrière"
@@ -41,6 +33,15 @@ Exemple "Utiliser P → Q en arrière"
 Démonstration :
  Par h il suffit de montrer que P
  On conclut par hP
+QED
+
+-- Utiliser une implication en avant : `on conclut par ... appliqué à ...`
+Exemple "Utiliser P → Q en avant"
+ Données : (P Q : Prop)
+ Hypothèses : (h : P → Q) (hP : P)
+ Conclusion : Q
+Démonstration :
+ On conclut par h appliqué à hP
 QED
 
 /- ================= CONJONCTION (∧) ================= -/

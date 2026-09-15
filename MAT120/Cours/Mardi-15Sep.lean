@@ -16,7 +16,7 @@ open Verbose.Named
 -/
 
 /- LEAN est un **assistant de preuve par ordinateur**, c'est-à-dire qu'il permet à
-l'usager de savoir si une **proposition** est vraie. Dans LEAN, il y a différents **types** d'objets, dont le plus important est le type Prop : -/
+l'usager de savoir si une **proposition** est vraie (ou fausse!). Dans LEAN, il y a différents **types** d'objets, dont le plus important est le type Prop : -/
 
 example (P : Prop) : Prop := P -- P est une proposition : un énoncé, ni vrai ni faux pour l'instant. On dit que P est un **terme** de `Prop`
 
@@ -42,11 +42,11 @@ example (P : Prop) (nhP : ¬ P) : ¬ P := nhP
      ↔  « équivaut à »  \iff
 -/
 
-example (P Q : Prop) : Prop := P ∧ Q
-example (P Q : Prop) : Prop := P ∨ Q
-example (P : Prop)   : Prop := ¬ P
-example (P Q : Prop) : Prop := P → Q
-example (P Q : Prop) : Prop := P ↔ Q
+example (P Q : Prop) : Prop := sorry -- conjonction
+example (P Q : Prop) : Prop := sorry -- disjonction
+example (P : Prop)   : Prop := sorry -- negation
+example (P Q : Prop) : Prop := sorry -- implication
+example (P Q : Prop) : Prop := sorry -- equivalence
 
 
 /- 2. Les ensembles de nombres
@@ -63,6 +63,8 @@ example : ℕ := 42
 example : ℤ := -7
 example : ℝ := 3.5
 
+
+-- example (P : Prop) (hP : P) : P := hP
 example : (2 : ℕ) = 2 := by rfl -- Traduction:
 example : (2 : ℝ) ≠ 3 := by norm_num -- Traduction:
 #check (2 : ℝ)   -- on précise le type entre parenthèses
@@ -139,16 +141,13 @@ QED
 
 /- Exemple de calcul propositionnel -/
 
-Exemple "Laboratoire 4 1)"
+Exemple "Démontrer que les deux ennoncés sont équivalents en utilisant seulement les régles LP-1 à LP-21"
   Données : (A B : Prop)
   Hypothèses :
   Conclusion : (A ∨ (A ∧ B)) ↔ A
 Démonstration :
 On réécrit via LP_12 -- Cette technique nous permet de réécrire une proposition avec une autre proposition équivalente.
-On réécrit via LP_6
-On réécrit via LP_11
-On réécrit via LP_5
-On réécrit via LP_14
+sorry
 QED
 
 /- 5. `sorry` — la preuve par excuse
