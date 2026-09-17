@@ -211,3 +211,16 @@ lemma LP_50
 -- équivalence divers 7
 lemma LP_51
 (A B C : Prop) : (A ∨ (B ↔ C)) ↔ ((A ∨ B) ↔ (A ∨ C)) := by grind
+
+
+
+-- Exemple de entrée dans la bibliotèque des resultats du cours.
+
+def pair_ (n : ℤ) : Prop :=  ∃ k: ℤ, n= 2*k
+
+notation:50 n:80 " est pair " => pair_ n
+
+configureUnfoldableDefs pair_
+
+lemma n2_pair_iff_n_pair
+(n : ℤ) : pair_ n ↔ pair_ (n^2) := sorry -- Verbose lean de esto! n est paire := paire n
