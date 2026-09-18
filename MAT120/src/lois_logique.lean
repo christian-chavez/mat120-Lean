@@ -216,6 +216,8 @@ lemma LP_51
 
 -- Exemple de entrée dans la bibliotèque des resultats du cours.
 
+--- This has been written in LEAN (not Verbose LEAN)
+
 def pair_ (n : ℤ) : Prop :=  ∃ k: ℤ, n= 2*k
 
 notation:50 n:80 " est pair " => pair_ n
