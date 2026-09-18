@@ -217,15 +217,7 @@ Exemple "Transitivité de la division"
   Hypothèses : (habc : (a : ℕ) ∣ b ∧ (b : ℕ )∣ c) -- P ∧ Q
   Conclusion : (a ∣ c)
 Démonstration :
-  Par habc on obtient ha hb  -- Traduction:
-  -- sorry
-  Par ha on obtient k : ℕ tel que hk
-  Par hb on obtient k' : ℕ tel que hk'
-  Montrons que k*k' convient
-  -- On calcule
-  Calc c = b * k' par hk'
-       _ = (a*k)*k' par hk
-       _ = a*(k*k') par calcul -- Dernière fois qu'on peut voir le but original, c'est avant le `par`
+  sorry
 QED
 
 
