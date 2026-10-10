@@ -3,9 +3,9 @@ import Verbose.French.ExampleLib
 open Verbose.French
 open Verbose.Named
 
-/- ======================================================================
+/- =================================================================
    PROJET LEAN A — Pair et impair
-   ===================================================================
+   ==============================================================
 
    Définitions (à utiliser telles quelles) :
      n est pair   :  ∃ k : ℤ, n = 2*k
@@ -17,8 +17,8 @@ open Verbose.Named
      c) Le carré d'un entier impair est impair.
      e) Réfuter : « pour tout entier n, n² ≥ 2n ».
 
-   PARTIE ÉCRITE: Rédiger d'abord la preuve de chaque un en papier., comme dans les notes.
-   =================================================================
+  PARTIE ÉCRITE : rédiger d'abord la preuve de chacun sur papier.
+  ================================================================
 
 Rappel des commandes utiles
      Par h on obtient (k : ℤ) tel que (hk : n = 2*k)
